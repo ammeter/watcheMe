@@ -1,8 +1,9 @@
 $(document).ready(function () {
 
-    var linkStatus = "http://158.108.165.223/data/groupZeedUpLight/Status/";
+    var linkStatus = "http://158.108.165.223/data/groupZeedUpStatus";
     // อัพเดตสเตตัส อุณหภูมิ
-    var linkTemperature = "http://158.108.165.223/data/groupZeedUpTemperature";
+
+    var linkTemperature = "http://158.108.165.223/data/groupZeedUpTemperature";;
 
     setInterval(function () {
         $.ajax({
@@ -67,28 +68,49 @@ $(document).ready(function () {
     var t0 = 0;
     var number;
     var count = 0;
-    var countTime = setInterval(function () {
+    var countTime = function () {
+        if (t0 !== -1) {
+            setInterval(function () {
+                $.ajax({
+                    url: linkStatus
+                }).done(function (data) {
+                    console.log(4444444444);
+                    console.log("success");
+                    if (count === 0) {
+                        number = data;
+                        count = 1;
+                    }
+                    console.log(t0);
+                    if (t0 > 5000) {
+                        t0 = -1;
+                        count = 0;
+                        $('#show3').append("You are in danger!");
+                        clearInterval();
+                    } else if (t0 < 5000 && t0 != -1) {
+                        t0 = performance.now();
+                    }
+                    $('#show2').text(t0);
+                    $('#show').text(number);
+                    console.log(t0);
+                }).fail(function (data) {
+                    console.log("failed");
+                });
+            }, 1000 * 1);
+        }
+    }
+
+    setInterval(function () {
         $.ajax({
             url: linkStatus
         }).done(function (data) {
-            console.log("success");
-            if (count === 0) {
-                number = data;
-                count = 1;
-            }
-            if(t0 < 5000) {
-                t0 = performance.now();
-            }
-            if(t0 > 5000 && number === data) {
-                t0 = 0;
+            if (number !== data) {
+                number = 0;
                 count = 0;
-                $('#show3').append("You are in danger!");
-                clearInterval(countTime);
+                countTime();
+                console.log(555555);
             }
-            $('#show2').text(t0);
-            $('#show').text(number);
         }).fail(function (data) {
-            console.log("failed");
+            console.log("fail");
         });
     }, 1000 * 1);
 
