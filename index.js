@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
+    var linkStatus = "http://158.108.165.223/data/groupZeedUpStatus";
     // อัพเดตสเตตัส อุณหภูมิ
-    var linkTemperature = "http://158.108.165.223/data/groupZeedUpTemperature";
+
+    var linkTemperature = "http://158.108.165.223/data/groupZeedUpTemperature";;
 
     setInterval(function () {
         $.ajax({
@@ -41,59 +43,24 @@ $(document).ready(function () {
         });
     }, 1000 * 2);
 
-    // อัพเดตเวลา
+    // var policeIsOn = false;
+    // policeCheckFunction = function () {
+    //     $.ajax({
+    //         url: link
+    //     }).done(function (data) {
+    //         if (policeIsOn === true) {
+                
+    //         } else {
 
-    var linkStatus = "http://158.108.165.223/data/groupZeedUpLight/Status/";
+    //         }
+    //     }).fail(function (data) {
+    //         console.log("fail");
+    //     });
+    // }
 
-    var checkFamIsOn = false;
-    checkFunction = function () {
-        $.ajax({
-            url: link
-        }).done(function (data) {
-            if (checkFamIsOn === true) {
-
-            } else {
-
-            }
-        }).fail(function (data) {
-            console.log("fail");
-        });
-    }
-
-    $('#famcheck').click(function (data) {
-
-        if (data === 3) {
-            checkFunction();
-        }
-    });
-
-    var t0 = 0;
-    var number;
-    var count = 0;
-    var countTime = setInterval(function () {
-        $.ajax({
-            url: linkStatus
-        }).done(function (data) {
-            console.log("success");
-            if (count === 0) {
-                number = data;
-                count = 1;
-            }
-            if (t0 < 5000) {
-                t0 = performance.now();
-            }
-            if (t0 > 5000 && number === data) {
-                t0 = 0;
-                count = 0;
-                $('#show3').append("You are in danger!");
-                clearInterval(countTime);
-            }
-            $('#show2').text(t0);
-            $('#show').text(number);
-        }).fail(function (data) {
-            console.log("failed");
-        });
-    }, 1000 * 1);
+    // $('#polcheck').click(function (data) {
+    //     
+    // });
 
     // อัพเดตสเตตัสว่า สั่น เพราะอะไร
 
@@ -122,32 +89,82 @@ $(document).ready(function () {
 
     }, 1000 * 5);
 
-     // ล็อค สถานที่
+    // ล็อค สถานที่
 
-        $('#saveButton').click(function() {
-            var focusedPlace = $('#riskyInputField').val();
-            console.log(focusedPlace);
-            $.ajax({
-                url: linkAreaRisky
-            }).done(function(data) {
-                if( data.search(focusedPlace) != "-1" ) {
-                    // Do nothing
-                    console.log("AreaRisky already have " + focusedPlace);
-                }
-                else {
-                    var tempPlace = data;
-                    $.ajax({
-                        url: linkAreaRisky + "/set/" + focusedPlace + " " + tempPlace
-                    }).done(function() {
-                        console.log("AreaRisky just added " + focusedPlace + " into it.");
-                    }).fail(function() {
-                        console.log("AreaRisky cannot added.");
-                    });
-                }
-            }).fail(function(data) {
-                console.log("AreaRisky cannot checked .");
-            });
+    $('#saveButton').click(function () {
+        var focusedPlace = $('#riskyInputField').val();
+        console.log(focusedPlace);
+        $.ajax({
+            url: linkAreaRisky
+        }).done(function (data) {
+            if (data.search(focusedPlace) != "-1") {
+                // Do nothing
+                console.log("AreaRisky already have " + focusedPlace);
+            } else {
+                var tempPlace = data;
+                $.ajax({
+                    url: linkAreaRisky + "/set/" + focusedPlace + " " + tempPlace
+                }).done(function () {
+                    console.log("AreaRisky just added " + focusedPlace + " into it.");
+                }).fail(function () {
+                    console.log("AreaRisky cannot added.");
+                });
+            }
+        }).fail(function (data) {
+            console.log("AreaRisky cannot checked .");
         });
+    });
+
+
+    var t0 = 0;
+    var number;
+    var count = 0;
+    var countTime = function () {
+        if (t0 !== -1) {
+            setInterval(function () {
+                $.ajax({
+                    url: linkStatus
+                }).done(function (data) {
+                    console.log("success");
+                    if (count === 0) {
+                        number = data;
+                        count = 1;
+                    }
+                    if (t0 > 5000) {
+                        t0 = -1;
+                        count = 0;
+                        $('#show3').text("You are in danger!");
+                        clearInterval();
+                    } else if (t0 < 5000 && t0 != -1) {
+                        t0 = performance.now();
+                    }
+                    $('#show2').text(t0);
+                    $('#show').text(number);
+                    console.log(t0);
+                }).fail(function (data) {
+                    console.log("failed");
+                });
+            }, 1000 * 1);
+        }
+    }
+
+    setInterval(function () {
+        $.ajax({
+            url: linkStatus
+        }).done(function (data) {
+            if (number !== data) {
+                number = 0;
+                count = 0;
+                $('#show3').text("");
+                countTime();
+                console.log(555555);
+            }
+        }).fail(function (data) {
+            console.log("fail");
+        });
+    }, 1000 * 1);
+
+    
 
 
     // วนลูปตาราง Police
@@ -178,5 +195,4 @@ function date_time(id) {
     document.getElementById(id).innerHTML = result;
     setTimeout('date_time("' + id + '");', '1000');
     return true;
-
 }
