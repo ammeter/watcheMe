@@ -74,20 +74,20 @@ $(document).ready(function () {
                 $.ajax({
                     url: linkStatus
                 }).done(function (data) {
-                    console.log(4444444444);
                     console.log("success");
                     if (count === 0) {
                         number = data;
                         count = 1;
                     }
-                    console.log(t0);
                     if (t0 > 5000) {
                         t0 = -1;
                         count = 0;
-                        $('#show3').append("You are in danger!");
+                        $('#show3').text("You are in danger!");
                         clearInterval();
-                    } else if (t0 < 5000 && t0 != -1) {
+                    } else if (t0 < 5000 && (t0 != -1)) {
                         t0 = performance.now();
+                    }else {
+                        
                     }
                     $('#show2').text(t0);
                     $('#show').text(number);
@@ -106,6 +106,7 @@ $(document).ready(function () {
             if (number !== data) {
                 number = 0;
                 count = 0;
+                $('#show3').text("");
                 countTime();
                 console.log(555555);
             }
