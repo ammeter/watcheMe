@@ -3,7 +3,7 @@ $(document).ready(function () {
     var linkStatus = "http://158.108.165.223/data/groupZeedUpStatus";
     // อัพเดตสเตตัส อุณหภูมิ
 
-    var linkTemperature = "http://158.108.165.223/data/groupZeedUpTemperature";;
+    var linkTemperature = "http://158.108.165.223/data/groupZeedUp/Temperature";;
 
     setInterval(function () {
         $.ajax({
@@ -164,7 +164,63 @@ $(document).ready(function () {
         });
     }, 1000 * 1);
 
-    
+// ----------------------------------------LOG_IN----------------------------------------------
+
+  var currentUser = 'admin';
+
+  $('#loginbtn').click(function (data) {
+    var message1 = $('#Usernamebnk').val();
+    var message2 = $('#Passbnk').val();
+    console.log(message1);
+    console.log(message2);
+
+    if (message1 === 'admin') {
+      if (message2 === 'password') {
+        console.log("success")
+        currentUser = 'admin';
+        location.href = "./user.html"
+      } else {
+        alert("Wrong password!")
+        $('#Usernamebnk').val("");
+        $('#Passbnk').val("");
+      }
+    } else if (message1 === 'dad') {
+      if (message2 === 'password') {
+        console.log("success");
+        currentUser = 'dad';
+        location.href = "./user.html"
+        console.log("dad now logging in");
+      } else {
+        alert("Wrong password!")
+        $('#Usernamebnk').val("");
+        $('#Passbnk').val("");
+      }
+    } else if (message1 === 'mom') {
+      if (message2 === 'password') {
+        console.log("success");
+        currentUser = 'mom';
+        location.href = "./user.html"
+      } else {
+        alert("Wrong password!")
+        $('#Usernamebnk').val("");
+        $('#Passbnk').val("");
+      }
+    } else {
+      alert("No user!")
+    }
+
+  })
+
+    console.log("--------------------------");
+    console.log(currentUser);
+
+  if(currentUser === 'admin') {
+      $('#curuser').text("Admin");
+  }else if(currentUser === 'dad') {
+      $('#curuser').text("Dad");
+  }else {
+      $('#curuser').text("Mom");
+  }
 
 });
 
