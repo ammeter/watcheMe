@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-    var linkStatus = "http://158.108.165.223/data/groupZeedUpLight/Status/";
     // อัพเดตสเตตัส อุณหภูมิ
     var linkTemperature = "http://158.108.165.223/data/groupZeedUpTemperature";
 
@@ -42,6 +41,10 @@ $(document).ready(function () {
         });
     }, 1000 * 2);
 
+    // อัพเดตเวลา
+
+    var linkStatus = "http://158.108.165.223/data/groupZeedUpLight/Status/";
+
     var checkFamIsOn = false;
     checkFunction = function () {
         $.ajax({
@@ -76,10 +79,10 @@ $(document).ready(function () {
                 number = data;
                 count = 1;
             }
-            if(t0 < 5000) {
+            if (t0 < 5000) {
                 t0 = performance.now();
             }
-            if(t0 > 5000 && number === data) {
+            if (t0 > 5000 && number === data) {
                 t0 = 0;
                 count = 0;
                 $('#show3').append("You are in danger!");
@@ -91,6 +94,60 @@ $(document).ready(function () {
             console.log("failed");
         });
     }, 1000 * 1);
+
+    // อัพเดตสเตตัสว่า สั่น เพราะอะไร
+
+    var linkStatusNow = "http://158.108.165.223/data/groupZeedUpLight/Status";
+
+    setInterval(function () {
+        $.ajax({
+            url: linkStatusNow
+        }).done(function (data) {
+            if (data === "1321" || data === "1421") {
+                console.log("Falling down");
+                $('#statussField').val("Falling down");
+            } else if (data === "1322" || data === "1422") {
+                console.log("Criminal");
+                $('#statussField').val("Criminal Faced");
+            } else if (data === "1323" || data === "1423") {
+                console.log("Conflagration (Fire)");
+                $('#statussField').val("Stand in Conflagration (Fire)");
+            } else {
+                console.log("Safe...");
+                $('#statussField').val("Safe...");
+            }
+        }).fail(function (data) {
+            console.log("Cannot set the status of the user.");
+        });
+
+    }, 1000 * 1);
+
+     // ล็อค สถานที่
+
+        $('#saveButton').click(function() {
+            var focusedPlace = $('#riskyInputField').val();
+            console.log(focusedPlace);
+            $.ajax({
+                url: linkAreaRisky
+            }).done(function(data) {
+                if( data.search(focusedPlace) != "-1" ) {
+                    // Do nothing
+                    console.log("AreaRisky already have " + focusedPlace);
+                }
+                else {
+                    var tempPlace = data;
+                    $.ajax({
+                        url: linkAreaRisky + "/set/" + focusedPlace + " " + tempPlace
+                    }).done(function() {
+                        console.log("AreaRisky just added " + focusedPlace + " into it.");
+                    }).fail(function() {
+                        console.log("AreaRisky cannot added.");
+                    });
+                }
+            }).fail(function(data) {
+                console.log("AreaRisky cannot checked .");
+            });
+        });
 
 });
 
@@ -118,4 +175,5 @@ function date_time(id) {
     document.getElementById(id).innerHTML = result;
     setTimeout('date_time("' + id + '");', '1000');
     return true;
+
 }
