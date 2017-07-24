@@ -64,6 +64,13 @@
                 <div class="thumbnail">
                     <img src="https://bootstrapious.com/ck_resources/img/google-maps-2.JPG" width="1600px" height="900px">
                 </div>
+                <div class="panel-body">
+                    <span id="date_time"></span>
+                    <script type="text/javascript">
+                        window.onload = date_time('date_time');
+                    </script>
+                    <span id="show"></span>___<span id="show2"></span>___<span id="show3"></span>
+                </div>
             </div>
         </div>
 
@@ -85,9 +92,9 @@
                     <h3 class="panel-title">Emergency</h3>
                 </div>
                 <div class="panel-body">
-                    <input type="checkbox"> Family<br>
-                    <input type="checkbox"> Police<br>
-                    <input type="checkbox"> Hospital
+                    <input type="checkbox" id="famcheck"> Family<br>
+                    <input type="checkbox" id="polcheck"> Police<br>
+                    <input type="checkbox" id="hoscheck"> Hospital
                 </div>
             </div>
         </div>
