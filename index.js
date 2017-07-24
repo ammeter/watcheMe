@@ -43,27 +43,78 @@ $(document).ready(function () {
         });
     }, 1000 * 2);
 
-    var checkFamIsOn = false;
-    checkFunction = function () {
+    // var policeIsOn = false;
+    // policeCheckFunction = function () {
+    //     $.ajax({
+    //         url: link
+    //     }).done(function (data) {
+    //         if (policeIsOn === true) {
+                
+    //         } else {
+
+    //         }
+    //     }).fail(function (data) {
+    //         console.log("fail");
+    //     });
+    // }
+
+    // $('#polcheck').click(function (data) {
+    //     
+    // });
+
+    // อัพเดตสเตตัสว่า สั่น เพราะอะไร
+
+    var linkStatusNow = "http://158.108.165.223/data/groupZeedUpLight/Status";
+
+    setInterval(function () {
         $.ajax({
-            url: link
+            url: linkStatusNow
         }).done(function (data) {
-            if (checkFamIsOn === true) {
-
+            if (data === "1321" || data === "1421") {
+                console.log("Falling down");
+                $('#statussField').val("Falling down");
+            } else if (data === "1322" || data === "1422") {
+                console.log("Criminal");
+                $('#statussField').val("Criminal Faced");
+            } else if (data === "1323" || data === "1423") {
+                console.log("Conflagration (Fire)");
+                $('#statussField').val("Stand in Conflagration (Fire)");
             } else {
-
+                console.log("Safe...");
+                $('#statussField').val("Safe...");
             }
         }).fail(function (data) {
-            console.log("fail");
+            console.log("Cannot set the status of the user.");
         });
-    }
 
-    $('#famcheck').click(function (data) {
+    }, 1000 * 1);
 
-        if (data === 3) {
-            checkFunction();
-        }
+    // ล็อค สถานที่
+
+    $('#saveButton').click(function () {
+        var focusedPlace = $('#riskyInputField').val();
+        console.log(focusedPlace);
+        $.ajax({
+            url: linkAreaRisky
+        }).done(function (data) {
+            if (data.search(focusedPlace) != "-1") {
+                // Do nothing
+                console.log("AreaRisky already have " + focusedPlace);
+            } else {
+                var tempPlace = data;
+                $.ajax({
+                    url: linkAreaRisky + "/set/" + focusedPlace + " " + tempPlace
+                }).done(function () {
+                    console.log("AreaRisky just added " + focusedPlace + " into it.");
+                }).fail(function () {
+                    console.log("AreaRisky cannot added.");
+                });
+            }
+        }).fail(function (data) {
+            console.log("AreaRisky cannot checked .");
+        });
     });
+
 
     var t0 = 0;
     var number;
@@ -84,7 +135,7 @@ $(document).ready(function () {
                         count = 0;
                         $('#show3').text("You are in danger!");
                         clearInterval();
-                    } else if (t0 < 5000 && (t0 != -1)) {
+                    } else if (t0 < 5000 && t0 != -1) {
                         t0 = performance.now();
                     }
                     $('#show2').text(t0);
@@ -112,6 +163,8 @@ $(document).ready(function () {
             console.log("fail");
         });
     }, 1000 * 1);
+
+    
 
 });
 

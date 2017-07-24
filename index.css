@@ -197,3 +197,9 @@ input:checked+.slider:before {
 #statussField {
     text-align: center;
 }
+
+/*--------------------------------DISPLAY---------------------------------------*/
+
+#show {
+    float: center;
+}
