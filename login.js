@@ -9,9 +9,11 @@ $(document).ready(function(){
     if(message1 === 'admin'){
       if(message2 === 'password'){
         console.log("success")
-        location.href = "./logout.html"
+        location.href = "./index.html"
       } else {
         alert("Wrong password!")
+  $('#Usernamebnk').val("");
+  $('#Passbnk').val("");
       }
     } else {
       alert("No user!")

@@ -86,8 +86,6 @@ $(document).ready(function () {
                         clearInterval();
                     } else if (t0 < 5000 && (t0 != -1)) {
                         t0 = performance.now();
-                    }else {
-                        
                     }
                     $('#show2').text(t0);
                     $('#show').text(number);
