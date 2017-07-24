@@ -1,127 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Watch Me : Home </title>
-    <link rel="stylesheet" href="index.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-        crossorigin="anonymous">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-    <script src="index.js"></script>
-    <script src="signal.js"></script>
-    <script src="contact.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="shortcut icon" href="assets/ico/favicon.png">
+
+	<title>Watch ME</title>
+
+	<link href="assets/css/bootstrap.css" rel="stylesheet">
+
+	<link href="assets/css/main.css" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+	<script src="assets/js/jquery.min.js"></script>
+	<!-- <script src="assets/js/modernizr.custom.js"></script> -->
+
+
+
+	<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+
 </head>
 
 <style>
-    body {
-        background-image: url(http://www.designbolts.com/wp-content/uploads/2013/02/Noise-Light-Grey-Tileable-Pattern-For-Website-Background.jpg);
-        background-repeat: repeat;
-        background-attachment: fixed;
-    }
+	#home {
+		text-align: left;
+		margin-left: 200px;
+	}
 </style>
 
-<body>
+<body data-spy="scroll" data-offset="0" data-target="#theMenu">
 
-    <nav class="navbar navbar-default sidebar" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-                    <li><a href="user.html">User<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Group <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-briefcase"></span></a>
-                        <ul class="dropdown-menu forAnimate" role="menu">
-                            <li><a href="dad.html">Dad</a></li>
-                            <li><a href="mom.html">Mom</a></li>
-                            <!-- <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li> -->
-                        </ul>
-                    </li>
-                    <li><a href="setting.html">Setting<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a></li>
-                    <li><a href="login.html">Log Out<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-log-out"></span></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+	<nav class="menu" id="theMenu">
+		<div class="menu-wrap">
+			<h1 class="logo"><a href="index.html#home">Watch ME</a></h1>
+			<i class="icon-remove menu-close"></i>
+			<a href="#home" class="smoothScroll">Home</a>
+			<a href="#user" class="smoothScroll">User</a>
+			<a href="#group" class="smoothScroll">Group</a>
+			<a href="login.html" class="smoothScroll">Log In</a>
+		</div>
 
-    <div class="col-sm-16 col-md-9">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Location</h3>
-            </div>
-            <div class="thumbnail">
-                <center>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10169.912828774754!2d99.96549844645655!3d14.004733321921172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xdf9c5ffe91377c6a!2z4LmB4Liq4LiZ4Lib4Liy4Lil4LmM4LihIOC5gOC4l-C4o-C4meC4meC4tOC5iOC4hyDguYLguK7guKE!5e1!3m2!1sen!2sth!4v1500890996983"
-                        width="850" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </center>
-                <!-- <img src="https://bootstrapious.com/ck_resources/img/google-maps-2.JPG" width="3200px" height="1800px"> -->
-            </div>
-            <div class="panel-body">
-                <span id="date_time"></span>
-                <script type="text/javascript">
-                    window.onload = date_time('date_time');
-                </script>
-                <!-- <span id="show"></span>___<span id="show2"></span>___<span id="show3"></span> -->
-            </div>
-        </div>
-    </div>
 
-        <div class="col-sm-5 col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Status</h3>
-                </div>
-                <div class="panel-body">
-                    Temperature : <input type="text" id="temperatureField" style="width:10%" disabled></input> Celsius.
-                    </br>
-                    Signal : <input type="text" id="signalField" style="width:50%" disabled></input>
-                    </br>
-                    Area risky : <input type="text" id="areaRiskyField" style="width:30%" disabled></input>
-                    </br>
-                    Status : <input type="text" id="statussField" style="width:60%" disabled></input>
-                </div>
-            </div>
-        </div>
+		<div id="menuToggle"><i class="icon-reorder"></i></div>
+	</nav>
 
-        <!-- <div class="col-sm-5 col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Emergency</h3>
-                </div>
-                <div class="panel-body">
-                    <input type="checkbox" id="famcheck"> Family<br>
-                    <input type="checkbox" id="polcheck"> Police<br>
-                    <input type="checkbox" id="hoscheck"> Hospital
-                </div>
-            </div>
-        </div> -->
 
-        <div class="col-sm-5 col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Your Place</h3>
-                </div>
-                <div class="panel-body" style="text-align: center">
-                    Place : <input type="text" id="riskyInputField" style="width:65%"></input>
-                    <button type="button" class="btn btn-primary btn-sm" id="saveButton">Save</button>
-                </div>
-            </div>
-        </div>
+
+	<section id="home" name="home"></section>
+	<div id="headerwrap">
+		<div class="container">
+			<div class="row">
+				<br>
+				<br>
+				<h1>WATCH ME</h1><br>
+				<span id="curuser2"></span> 
+				<br>
+				<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5717.087167101951!2d99.96970895451953!3d14.006222000448297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xdf9c5ffe91377c6a!2z4LmB4Liq4LiZ4Lib4Liy4Lil4LmM4LihIOC5gOC4l-C4o-C4meC4meC4tOC5iOC4hyDguYLguK7guKE!5e0!3m2!1sen!2sth!4v1500914176113"
+				    width="800" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+				<script type="text/javascript"> -->
+				<span id="date_time"></span>
+				<script type="text/javascript">
+					// window.onload = date_time('date_time');
+				</script>
+				<div id="home">
+					<br>Temperature : <span id="temperatureField"></span> Celsius.
+					</br>
+					Signal : <span id="signalField" style="width:50%" disabled></span>
+					</br>
+					Area risky : <span id="areaRiskyField" style="width:30%" disabled></span>
+					</br>
+					Status : <span id="statussField" style="width:60%" disabled></span>
+					<br>
+				</div>
+				<section id="contact" name="contact"></section>
+				<div class="container">
+					<div class="row">
+						<br>
+						<br>Your Place : <input type="text" id="riskyInputField" style="width:45%"></input>
+						<button type="button" class="btn btn-default btn-lg" id="saveButton">Save</button>
+
+					</div>
+				</div>
+			</div>
+			<br>
+			<br>
+		</div>
+	</div>
+	</div>
+
+
+
+	<section id="user" name="about"></section>
+	<div id="f">
+		<div class="container">
+			<div class="row">
+				<div class="item centered">
+					<center><img class="img-responsive" src="https://www.shareicon.net/data/512x512/2016/07/03/790267_man_512x512.png" alt="" width="250px"
+						    height="250px"></center>
+					<p>
+						<h1>Jim</h1>
+						Birthdate : 01.02.1998
+						<br>Address : 2/13 Phahol Yothin<br>Underlying Disease : Diabetes<br>Education : Kasetsart University
+					</p>
+					<div id="border-box">
+						<div class="panel-body">
+							<span type="title" id="onOffWord">Offline</span><br>
+							<label class="switch">
+                        <input type="checkbox" id="onlineCheck">
+                        <span class="slider round" id="checkOnlineOffline"></span>
+                    </label>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<section id="group" name="portfolio"></section>
+	<div id="f">
+		<div class="container">
+			<div class="row centered">
+				<div class="col-lg-6 col-lg-offset-3">
+					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner">
+							<div class="item active centered">
+								<center><img class="img-responsive" src="https://www.shareicon.net/data/512x512/2016/08/18/811976_man_512x512.png" alt=""
+									    width="250px" height="250px"></center>
+								<p>
+									<h2>Dad</h2>Birthdate : 06.15.1975
+									<br>Address : 2/13 Phahol Yothin<br>Underlying Disease : Diabetes<br>Education : Kasetsart University
+								</p>
+							</div>
+							<div class="item centered">
+								<center><img class="img-responsive" src="https://www.shareicon.net/data/512x512/2016/08/18/811934_user_512x512.png" alt=""
+									    width="250px" height="250px"></center>
+								<p>
+									<h2>Mom</h2>Birthdate : 28.11.1980<br>Address : 2/13 Phahol Yothin<br>Underlying Disease : -<br>Education : Kasetsart
+									University
+								</p>
+							</div>
+						</div>
+						<br>
+						<br>
+						<ol class="carousel-indicators">
+							<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	 <!-- <script src="assets/js/classie.js"></script>  -->
+	<script src="assets/js/signal.js"></script>
+	<script src="assets/js/Online-Offline.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/smoothscroll.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/login.js"></script>
 </body>
 
 </html>

@@ -2,7 +2,11 @@
 <html>
 <style>
 html {
-        height: 100%
+        height: 100%;
+        background-image: url("./assets/img/header-bg.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        
     }
     /* Full-width input fields */
 
@@ -160,12 +164,14 @@ html {
     .cancelbtn {
         width: 100%;
     }
+    
+    
 }
 </style>
 
 <body>
     <div id="page-wrap">
-        <h2 style="font-size: 60px">Welcome to website</h2>
+        <h2 style="font-size: 60px">Welcome to Watch ME</h2>
 
         <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
     </div>
@@ -184,8 +190,8 @@ html {
                 <label><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" id="Passbnk" name="psw" required>
 
-                <button type="button" id="loginbtn" href="user.html">Login</button>
-                <input type="checkbox" checked="checked"> Remember me
+                <button type="button" class="btn btn-default" id="loginbtn">Login</button>
+                <!-- <button type="button" class="btn btn-default" id="loginbtn" >Login</button> -->
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
@@ -206,9 +212,10 @@ html {
                 modal.style.display = "none";
             }
         }
+
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="index.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
