@@ -23,6 +23,7 @@ $(document).ready(function () {
         }).done(function (oldData) {
             console.log("Read old data from police success.");
             var newMessage = $('#riskyInputField').val() + "  " + "USER1" + "<br>" + oldData;
+            console.log( newMessage );
             $.ajax({
                 url: linkPolice + "/set/" + newMessage
             }).done(function () {
@@ -41,6 +42,7 @@ $(document).ready(function () {
         }).done(function (oldData) {
             console.log("Read old data from hospital success.");
             var newMessage = $('#riskyInputField').val() + "  " + "USER1" + "<br>" + oldData;
+            console.log( newMessage );
             $.ajax({
                 url: linkHospital + "/set/" + newMessage
             }).done(function () {
@@ -59,6 +61,7 @@ $(document).ready(function () {
         }).done(function (oldData) {
             console.log("Read old data from fire station success.");
             var newMessage = $('#riskyInputField').val() + "  " + "USER1" + "<br>" + oldData;
+            console.log( newMessage );
             $.ajax({
                 url: linkFire + "/set/" + newMessage
             }).done(function () {

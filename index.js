@@ -120,7 +120,7 @@ $(document).ready(function () {
             console.log("Cannot set the status of the user.");
         });
 
-    }, 1000 * 1);
+    }, 1000 * 5);
 
      // ล็อค สถานที่
 
@@ -149,6 +149,9 @@ $(document).ready(function () {
             });
         });
 
+
+    // วนลูปตาราง Police
+        
 });
 
 function date_time(id) {
