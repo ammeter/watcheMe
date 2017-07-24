@@ -1,11 +1,7 @@
 $(document).ready(function () {
 
-<<<<<<< HEAD
     var linkStatus = "http://158.108.165.223/data/groupZeedUpLight/Status/";
-=======
     // อัพเดตสเตตัส อุณหภูมิ
->>>>>>> 316b16ba6c9a907200c6733311237bef1834b167
-
     var linkTemperature = "http://158.108.165.223/data/groupZeedUpTemperature";
 
     setInterval(function () {
