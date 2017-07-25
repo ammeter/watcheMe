@@ -2,6 +2,14 @@ $(document).ready(function () {
 
             var linkOnlineOffline = "http://158.108.165.223/data/groupZeedUpIsOnOff";
 
+            $.ajax({
+                 url: linkOnlineOffline + "/set/" + 1200
+            }).done(function() {
+                console.log("Offline...");
+            }).fail(function() {
+                console.log("Fail to set initial status to Offline");
+            });
+
             var setStatusOnline = function () {
                 $.ajax({
                     url: linkOnlineOffline + "/set/" + 1200
@@ -23,14 +31,6 @@ $(document).ready(function () {
                     console.log("Failed to set offline please try again...");
                 });
             }
-
-            $.ajax({
-                 url: linkOnlineOffline + "/set/" + 1000
-            }).done(function() {
-                console.log("Offline...");
-            }).fail(function() {
-                console.log("Fail to set initial status to Offline");
-            });
 
             $('#checkOnlineOffline').click(function () {
                 $.ajax({

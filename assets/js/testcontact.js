@@ -33,6 +33,7 @@ $(document).ready(function () {
         };
 
         var result = Array.from(mylistPolice.keys());
+        console.log(result + "jjjjjj");
 
         for (var i = 0; i < result.length; i++) {
             var tempArray = result[i].split("  ");
@@ -43,7 +44,11 @@ $(document).ready(function () {
         policeArray = result;
 
         for (var i = 0; i < policeArray.length; i++) {
-            $('#myTablePolice').append("<tr><td>" + first[i] + "</td><td>" + second[i] + "</td></tr>");
+            var firstletter = first[i];
+            var secondletter = second[i];
+            if (firstletter !== "undefined") {
+                $('#myTablePolice').append("<tr><td>" + first[i] + "</td><td>" + second[i] + "</td></tr>");
+            }
         }
 
     }
@@ -51,7 +56,6 @@ $(document).ready(function () {
 
 
     var concentrateHospital = function (input) {
-
         first = [];
         second = [];
 
@@ -77,7 +81,11 @@ $(document).ready(function () {
         hospitalArray = result;
 
         for (var i = 0; i < hospitalArray.length; i++) {
-            $('#myTableHospital').append("<tr><td>" + first[i] + "</td><td>" + second[i] + "</td></tr>");
+            var firstletter = first[i];
+            var secondletter = second[i];
+            if (firstletter !== "undefined") {
+                $('#myTableHospital').append("<tr><td>" + first[i] + "</td><td>" + second[i] + "</td></tr>");
+            }
         }
 
     };
@@ -108,7 +116,11 @@ $(document).ready(function () {
         fireArray = result;
 
         for (var i = 0; i < fireArray.length; i++) {
-            $('#myTableFire').append("<tr><td>" + first[i] + "</td><td>" + second[i] + "</td></tr>");
+            var firstletter = first[i];
+            var secondletter = second[i];
+            if (firstletter !== "undefined") {
+                $('#myTableFire').append("<tr><td>" + first[i] + "</td><td>" + second[i] + "</td></tr>");
+            }
         }
     }
 
@@ -129,7 +141,14 @@ $(document).ready(function () {
             url: linkPolice
         }).done(function (oldData) {
             console.log("Read old data from police success.");
-            var newMessage = $('#riskyInputField').val() + "  " + "USER1" + "<br>" + oldData;
+            var newMessage = "";
+            var receiveWord = $('#riskyInputField').val();
+            if (receiveWord === null) {
+                newMessage = oldData;
+            } else {
+                newMessage = receiveWord + "  " + "USER" + "<br>" + oldData;
+            }
+            console.log("---->>>>>>" + $('#riskyInputField').val());
             $.ajax({
                 url: linkPolice + "/set/" + newMessage
             }).done(function () {
@@ -148,7 +167,14 @@ $(document).ready(function () {
             url: linkHospital
         }).done(function (oldData) {
             console.log("Read old data from hospital success.");
-            var newMessage = $('#riskyInputField').val() + "  " + "USER1" + "<br>" + oldData;
+            var newMessage = "";
+            var receiveWord = $('#riskyInputField').val();
+            if (receiveWord === null) {
+                newMessage = oldData;
+            } else {
+                newMessage = receiveWord + "  " + "USER" + "<br>" + oldData;
+            }
+            console.log("---->>>>>>" + $('#riskyInputField').val());
             $.ajax({
                 url: linkHospital + "/set/" + newMessage
             }).done(function () {
@@ -167,7 +193,14 @@ $(document).ready(function () {
             url: linkFire
         }).done(function (oldData) {
             console.log("Read old data from fire station success.");
-            var newMessage = $('#riskyInputField').val() + "  " + "USER1" + "<br>" + oldData;
+            var newMessage = "";
+            var receiveWord = $('#riskyInputField').val();
+            if (receiveWord === null) {
+                newMessage = oldData;
+            } else {
+                newMessage = receiveWord + "  " + "USER" + "<br>" + oldData;
+            }
+            console.log("---->>>>>>" + $('#riskyInputField').val());
             $.ajax({
                 url: linkFire + "/set/" + newMessage
             }).done(function () {
@@ -185,6 +218,7 @@ $(document).ready(function () {
         $.ajax({
             url: linkStatus
         }).done(function (data) {
+            console.log(data);
             if (data === "1421") {
                 console.log("Send to Hospital");
                 hospitalFunction();
